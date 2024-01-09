@@ -1,0 +1,30 @@
+//T.c : O(N)
+//S.c : O(h) 
+
+
+class Solution {
+    public void reorderList(ListNode head) {
+        ListNode[] temp = new ListNode[1];
+        temp[0] = head;
+        boolean[] isStop = new boolean[1];
+        isStop[0] = false;
+        reorder(head, temp, isStop);
+    }
+    public void reorder(ListNode head, ListNode[] temp, boolean[] isStop){
+        if(head == null) return;
+        reorder(head.next, temp, isStop);
+
+        if(isStop[0] != true){
+            ListNode Next = temp[0].next;
+            temp[0].next = head;
+            head.next = Next;
+            temp[0] = Next;
+        }
+
+        if(temp[0] != null && temp[0].next == head){
+            temp[0].next = null;
+            isStop[0] = true;
+        }
+        
+    }
+}
