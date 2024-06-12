@@ -12,6 +12,7 @@ class Solution {
         }
         ListNode dummy = new ListNode(100);
         ListNode ans = dummy;
+
         while(pq.size() != 0){
             dummy.next = pq.remove();
             dummy = dummy.next;
